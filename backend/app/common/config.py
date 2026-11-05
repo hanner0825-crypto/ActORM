@@ -4,7 +4,7 @@ import pymysql
 class Config:
     # Datos de conexión para MySQL (ajusta según tus credenciales)
     USER = 'root'                  # Usuario de MySQL
-    PASSWORD = '1234'              # Contraseña de MySQL
+    PASSWORD = ''              # Contraseña de MySQL
     HOST = 'localhost'             # Host donde corre MySQL (localhost por defecto)
     DATABASE = 'db_products'       # Nombre de la base de datos
 
