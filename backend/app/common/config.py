@@ -1,15 +1,21 @@
-import pymysql
-
+import os
 
 class Config:
-    # Datos de conexión para MySQL (ajusta según tus credenciales)
-    USER = 'root'                  # Usuario de MySQL
-    PASSWORD = ''              # Contraseña de MySQL
-    HOST = 'localhost'             # Host donde corre MySQL (localhost por defecto)
-    DATABASE = 'db_products'       # Nombre de la base de datos
+    # Local (por defecto) o la nube si existe DATABASE_URL
+    USER = 'root'
+    PASSWORD = ''
+    HOST = 'localhost'
+    DATABASE = 'db_productos'
 
-    # URL de conexión para SQLAlchemy usando el conector PyMySQL
-    SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{USER}:{PASSWORD}@{HOST}/{DATABASE}'
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        "DATABASE_URL",
+        f'mysql+pymysql://{USER}:{PASSWORD}@{HOST}/{DATABASE}'
+    )
 
-    # Desactiva el rastreo de modificaciones para evitar advertencias
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Aiven exige conexión segura (SSL)
+    if os.environ.get("DATABASE_URL"):
+        SQLALCHEMY_ENGINE_OPTIONS = {
+            "connect_args": {"ssl": {"ca": os.environ.get("SSL_CA", "ca.pem")}}
+        }
