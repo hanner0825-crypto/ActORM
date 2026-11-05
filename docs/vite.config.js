@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/ActORM/',
   build: {
-    outDir: '.', // Compila directamente en la carpeta docs
+    outDir: '.', // Genera los archivos en la raíz de docs
     emptyOutDir: false,
   },
 })
