@@ -7,12 +7,13 @@ function App() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
 
-  const API_URL = 'http://127.0.0.1:5000/products';
+  // Lee el archivo estático public/productos.json (funciona en local y en GitHub Pages)
+  const API_URL = `${import.meta.env.BASE_URL}productos.json`;
 
   useEffect(() => {
     fetch(API_URL)
       .then((res) => {
-        if (!res.ok) throw new Error('Error en la respuesta de la API');
+        if (!res.ok) throw new Error('Error al cargar los productos');
         return res.json();
       })
       .then((data) => {
@@ -20,7 +21,7 @@ function App() {
         setCargando(false);
       })
       .catch((err) => {
-        console.error('Error al conectar con la API:', err);
+        console.error('Error al cargar los productos:', err);
         setError(true);
         setCargando(false);
       });
@@ -54,10 +55,10 @@ function App() {
           <div className="text-center py-4">
             <div className="alert alert-danger shadow-sm d-inline-block" role="alert">
               <h5 className="alert-heading fw-bold mb-1">
-                <i className="bi bi-exclamation-triangle-fill me-2"></i>Error de conexión
+                <i className="bi bi-exclamation-triangle-fill me-2"></i>Error de carga
               </h5>
               <p className="mb-0">
-                Asegúrate de que la API en Flask se esté ejecutando (<code>python main.py</code>).
+                No se pudo cargar el archivo <code>productos.json</code>.
               </p>
             </div>
           </div>
@@ -69,7 +70,7 @@ function App() {
             {productos.length === 0 ? (
               <div className="col-12 text-center">
                 <div className="alert alert-info shadow-sm" role="alert">
-                  No se encontraron productos en la base de datos.
+                  No se encontraron productos.
                 </div>
               </div>
             ) : (

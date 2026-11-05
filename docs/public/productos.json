@@ -1,0 +1,7 @@
+[
+  {"id": 1, "nombre": "Laptop Lenovo", "descripcion": "Core i5 8GB RAM", "precio": 2500000, "stock_min": 2, "categoria_id": 1, "categoria_nombre": "Electrónica"},
+  {"id": 2, "nombre": "Mouse Inalámbrico", "descripcion": "Mouse óptico USB", "precio": 50000, "stock_min": 5, "categoria_id": 1, "categoria_nombre": "Electrónica"},
+  {"id": 3, "nombre": "Teclado Mecánico", "descripcion": "RGB profesional", "precio": 180000, "stock_min": 3, "categoria_id": 1, "categoria_nombre": "Electrónica"},
+  {"id": 4, "nombre": "Arroz 1kg", "descripcion": "Arroz premium", "precio": 4500, "stock_min": 10, "categoria_id": 2, "categoria_nombre": "Alimentos"},
+  {"id": 5, "nombre": "Aceite 1L", "descripcion": "Aceite vegetal", "precio": 12000, "stock_min": 8, "categoria_id": 2, "categoria_nombre": "Alimentos"}
+]
